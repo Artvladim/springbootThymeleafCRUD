@@ -1,24 +1,26 @@
 version: '3'
 services:
-  postgres:
+  app-db:
     image: postgres:11
     container_name: postgres
     environment:
-      POSTGRES_USER: docker
-      POSTGRES_PASSWORD: docker
+      POSTGRES_USER: docker_user
+      POSTGRES_PASSWORD: docker_password
       POSTGRES_DB: docker_db
     ports:
       - "5432:5432"
     restart: always
 
   app:
-    build: src/
+    build: .
     ports:
       - "8080:8080"
-    environment:
-      POSTGRES_HOST: postgres
-      POSTGRES_USER: docker
-      POSTGRES_PASSWORD: docker
+      - "5005:5005"
+#    environment:
+#      POSTGRES_HOST: postgres
+#      POSTGRES_USER: docker
+#      POSTGRES_PASSWORD: docker
     restart: always
     links:
-      - postgres
+      - app-db
+    command: java -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=5005 -Djava.security.egd=file:/dev/./urandom -jar app.jar

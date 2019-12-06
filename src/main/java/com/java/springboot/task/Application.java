@@ -20,6 +20,7 @@ public class Application implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
+	    
 		facultyRepository.save(new Faculty("Faculty 1"));
 	}
 }
