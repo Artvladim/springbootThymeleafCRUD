@@ -42,4 +42,12 @@ public class Student {
     @ManyToOne
     @JoinColumn(name = "faculty_id", nullable = false, foreignKey = @ForeignKey(name = "fk_faculty_id"))
     private Faculty faculty;
+
+    public Student(String name, String email, Integer age, String password, Faculty faculty) {
+        this.name = name;
+        this.email = email;
+        this.age = age;
+        this.password = password;
+        this.faculty = faculty;
+    }
 }
