@@ -7,7 +7,6 @@ import com.java.springboot.task.repository.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
-
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import java.util.ArrayList;
@@ -16,31 +15,32 @@ import java.util.List;
 @SpringBootApplication
 public class Application implements CommandLineRunner {
 
-	@Autowired
-	FacultyRepository facultyRepository;
+    @Autowired
+    FacultyRepository facultyRepository;
 
-	@Autowired
+    @Autowired
     StudentRepository studentRepository;
 
-	List<Faculty> faculties = new ArrayList<>();
 
-	List<Student> students = new ArrayList<>();
+    private List<Faculty> faculties = new ArrayList<>();
 
-	public static void main(String[] args) {
-		SpringApplication.run(Application.class, args);
-	}
+    private List<Student> students = new ArrayList<>();
 
-	@Override
-	public void run(String... args) throws Exception {
+    public static void main(String[] args) {
+        SpringApplication.run(Application.class, args);
+    }
 
-		faculties.add(facultyRepository.save(new Faculty("Мехмат")));
-		faculties.add(facultyRepository.save(new Faculty("Радиофак")));
-		faculties.add(facultyRepository.save(new Faculty("Физфак")));
-		faculties.add(facultyRepository.save(new Faculty("Литфак")));
+    @Override
+    public void run(String... args) throws Exception {
 
-		students.add(studentRepository.save(new Student("Petrov","111", 33, "111", faculties.get(0))));
-		students.add(studentRepository.save(new Student("Petrov","111", 33, "111", faculties.get(1))));
-		students.add(studentRepository.save(new Student("Petrov","111", 33, "111", faculties.get(2))));
-		students.add(studentRepository.save(new Student("Petrov","111", 33, "111", faculties.get(3))));
-	}
+        faculties.add(facultyRepository.save(new Faculty("Мехмат")));
+        faculties.add(facultyRepository.save(new Faculty("Радиофак")));
+        faculties.add(facultyRepository.save(new Faculty("Физфак")));
+        faculties.add(facultyRepository.save(new Faculty("Литфак")));
+
+        students.add(studentRepository.save(new Student("Сидоров Иван Инокентьевич", "sidorovia@mail.ru", 19, "sayyourmagicword", faculties.get(0))));
+        students.add(studentRepository.save(new Student("Петров Себастьян Вагитович", "petrovsv", 18, "onemoretime", faculties.get(1))));
+        students.add(studentRepository.save(new Student("Васильева Майя Оганесовна", "vasilievamo", 20, "justincaseof", faculties.get(2))));
+        students.add(studentRepository.save(new Student("Рогов Кирилл Николаевич", "rogovkn", 21, "easyroll", faculties.get(3))));
+    }
 }

@@ -20,6 +20,9 @@ public class StudentController {
 
     private final StudentService studentService;
 
+    private static final String STUDENT = "student";
+    private static final String STUDENTS = "students";
+
     @Autowired
     public StudentController(StudentService studentService) {
         this.studentService = studentService;
@@ -27,26 +30,26 @@ public class StudentController {
 
     @GetMapping("list")
     public String showUpdateForm(Model model) {
-        model.addAttribute("student", new Student());
-        model.addAttribute("students", studentService.list());
-        return "students";
+        model.addAttribute(STUDENT, new Student());
+        model.addAttribute(STUDENTS, studentService.list());
+        return STUDENTS;
     }
 
     @PostMapping("add")
     public String addStudent(@Valid Student student, BindingResult result, Model model) {
         if (result.hasErrors()) {
-            model.addAttribute("student", student);
-            model.addAttribute("students", studentService.list());
-            return "students";
+            model.addAttribute(STUDENT, student);
+            model.addAttribute(STUDENTS, studentService.list());
+            return STUDENTS;
         } else {
             if (studentService.findByName(student.getName()).isEmpty()) {
                 studentService.create(student);
             } else {
                 String msg = String.format("Student with name %s already exists", student.getName());
-                result.addError(new FieldError("student", "name", student.getName(), false, null, null, msg));
-                model.addAttribute("student", student);
-                model.addAttribute("students", studentService.list());
-                return "students";
+                result.addError(new FieldError(STUDENT, "name", student.getName(), false, null, null, msg));
+                model.addAttribute(STUDENT, student);
+                model.addAttribute(STUDENTS, studentService.list());
+                return STUDENTS;
             }
         }
 
@@ -57,7 +60,7 @@ public class StudentController {
     @GetMapping("delete/{id}")
     public String deleteStudent(@PathVariable("id") Long id, Model model) {
         studentService.delete(id);
-        model.addAttribute("students", studentService.list());
+        model.addAttribute(STUDENTS, studentService.list());
         return "redirect:/students/list";
     }
 }

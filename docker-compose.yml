@@ -16,10 +16,10 @@ services:
     ports:
       - "8080:8080"
       - "5005:5005"
-#    environment:
-#      POSTGRES_HOST: postgres
-#      POSTGRES_USER: docker
-#      POSTGRES_PASSWORD: docker
+    #    environment:
+    #      POSTGRES_HOST: postgres
+    #      POSTGRES_USER: docker
+    #      POSTGRES_PASSWORD: docker
     restart: always
     links:
       - app-db
