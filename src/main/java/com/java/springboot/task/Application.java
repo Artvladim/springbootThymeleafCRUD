@@ -39,8 +39,11 @@ public class Application implements CommandLineRunner {
         faculties.add(facultyRepository.save(new Faculty("Литфак")));
 
         students.add(studentRepository.save(new Student("Сидоров Иван Инокентьевич", "sidorovia@mail.ru", 19, "sayyourmagicword", faculties.get(0))));
-        students.add(studentRepository.save(new Student("Петров Себастьян Вагитович", "petrovsv", 18, "onemoretime", faculties.get(1))));
-        students.add(studentRepository.save(new Student("Васильева Майя Оганесовна", "vasilievamo", 20, "justincaseof", faculties.get(2))));
-        students.add(studentRepository.save(new Student("Рогов Кирилл Николаевич", "rogovkn", 21, "easyroll", faculties.get(3))));
+        students.add(studentRepository.save(new Student("Петров Себастьян Вагитович", "petrovsv@gmail.com", 18, "onemoretime", faculties.get(1))));
+        students.add(studentRepository.save(new Student("Васильева Майя Оганесовна", "vasilievamo@rambler.ru", 20, "justincaseof", faculties.get(2))));
+        students.add(studentRepository.save(new Student("Рогов Кирилл Николаевич", "rogovkn@wonnacry.net", 21, "easyroll", faculties.get(3))));
+        students.add(studentRepository.save(new Student("Водопьянов Сергей Николаевич", "vodopyanovsn@worldwide.net", 21, "screamy", faculties.get(1))));
+        students.add(studentRepository.save(new Student("Карапетян Мефодий Фарсукович", "karapet@rambler.ru", 17, "iceworld", faculties.get(2))));
+        students.add(studentRepository.save(new Student("Батистута Габриэль Эрнестович", "batistutagabriel@gmail.com", 30, "qwerty", faculties.get(2))));
     }
 }
