@@ -12,17 +12,16 @@ import org.springframework.data.domain.PageImpl;
 
 import java.util.stream.Collectors;
 
-@Mapper
+@Mapper( uses = FacultyMapper.class )
 public interface StudentMapper {
-
     StudentMapper MAPPER = Mappers.getMapper(StudentMapper.class);
 
-        @Mappings({
+    @Mappings({
             @Mapping(target = "id", source = "id"),
             @Mapping(target = "email", source = "email"),
             @Mapping(target = "age", source = "age"),
             @Mapping(target = "name", source = "name"),
-
+            @Mapping(target = "faculty", source = "faculty")
     })
     StudentDto mapToDto(Student source);
 
