@@ -10,6 +10,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 @SpringBootApplication
@@ -42,8 +44,9 @@ public class Application implements CommandLineRunner {
         students.add(studentRepository.save(new Student("Петров Себастьян Вагитович", "petrovsv@gmail.com", 18, "onemoretime", faculties.get(1))));
         students.add(studentRepository.save(new Student("Васильева Майя Оганесовна", "vasilievamo@rambler.ru", 20, "justincaseof", faculties.get(2))));
         students.add(studentRepository.save(new Student("Рогов Кирилл Николаевич", "rogovkn@wonnacry.net", 21, "easyroll", faculties.get(3))));
-        students.add(studentRepository.save(new Student("Водопьянов Сергей Николаевич", "vodopyanovsn@worldwide.net", 21, "screamy", faculties.get(1))));
+        students.add(studentRepository.save(new Student("Водопьянов Сергей Николаевич", "vodopyanovsn@worldwide.net", 23, "screamy", faculties.get(1))));
         students.add(studentRepository.save(new Student("Карапетян Мефодий Фарсукович", "karapet@rambler.ru", 17, "iceworld", faculties.get(2))));
         students.add(studentRepository.save(new Student("Батистута Габриэль Эрнестович", "batistutagabriel@gmail.com", 30, "qwerty", faculties.get(2))));
+
     }
 }

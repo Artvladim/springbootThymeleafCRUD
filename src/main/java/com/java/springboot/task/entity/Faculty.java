@@ -1,6 +1,5 @@
 package com.java.springboot.task.entity;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -9,7 +8,6 @@ import javax.persistence.*;
 import java.util.Set;
 
 @NoArgsConstructor
-@AllArgsConstructor
 @Getter
 @Setter
 @Entity
@@ -32,4 +30,8 @@ public class Faculty {
         this.name = name;
     }
 
+    public Faculty(Long id, String name) {
+        this.id = id;
+        this.name = name;
+    }
 }

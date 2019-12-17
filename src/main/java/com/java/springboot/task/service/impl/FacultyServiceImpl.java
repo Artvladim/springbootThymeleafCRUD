@@ -5,6 +5,9 @@ import com.java.springboot.task.repository.FacultyRepository;
 import com.java.springboot.task.service.FacultyService;
 import org.apache.commons.collections4.IteratorUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
@@ -29,6 +32,13 @@ public class FacultyServiceImpl implements FacultyService {
 	@Override
 	public List<Faculty> list() {
 		return IteratorUtils.toList( facultyRepository.findAll().iterator() );
+	}
+
+	@Override
+	public Page<Faculty> list(Integer from, Integer pageSize, String sortBy, Sort.Direction ordering) {
+		return facultyRepository.findAll(
+				PageRequest.of(from, pageSize,ordering, sortBy)
+		);
 	}
 
 	@Override
