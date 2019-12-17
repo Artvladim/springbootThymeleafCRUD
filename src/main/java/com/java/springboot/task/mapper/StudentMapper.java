@@ -1,7 +1,6 @@
 package com.java.springboot.task.mapper;
 
 import com.java.springboot.task.dto.StudentDto;
-import com.java.springboot.task.entity.Faculty;
 import com.java.springboot.task.entity.Student;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
